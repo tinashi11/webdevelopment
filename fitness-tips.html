@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Read simple fitness, hydration, safety, recovery, and motivation tips."
+    >
+
+    <meta
+        name="author"
+        content="Simple Fitness Planner"
+    >
+
+    <title>Fitness Tips | Simple Fitness Planner</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/fitness-tips.css">
+
+    <script src="js/main.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/fitness-tips.js" defer></script>
+</head>
+
+<body data-page="fitness-tips">
+
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<div class="site-wrapper">
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <div class="container navbar-container">
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="FitPlanner home"
+            >
+                <img src="images/logo.png" alt="FitPlanner logo" class="logo-image">
+
+                <span class="logo-text">
+                    FitPlanner
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation menu"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+                <ul class="navigation-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="navigation-link"
+                            data-page-link="home"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-plans.html"
+                            class="navigation-link"
+                            data-page-link="workout-plans"
+                        >
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="exercises.html"
+                            class="navigation-link"
+                            data-page-link="exercises"
+                        >
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-tracker.html"
+                            class="navigation-link"
+                            data-page-link="workout-tracker"
+                        >
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="water-tracker.html"
+                            class="navigation-link"
+                            data-page-link="water-tracker"
+                        >
+                            Water Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="progress.html"
+                            class="navigation-link"
+                            data-page-link="progress"
+                        >
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="fitness-tips.html"
+                            class="navigation-link"
+                            data-page-link="fitness-tips"
+                        >
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+    <main
+        class="main-content"
+        id="mainContent"
+    >
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <span class="page-label">
+                    Build Healthy Habits
+                </span>
+
+                <h1>
+                    Fitness Tips
+                </h1>
+
+                <p>
+                    Read simple advice about exercise, hydration,
+                    recovery, safety, nutrition, and motivation.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="page-content fitness-tips-section">
+
+            <div class="container">
+
+                <div
+                    class="tips-message"
+                    id="tipsMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <!-- ======================================
+                     RANDOM TIP
+                ======================================= -->
+                <section class="random-tip-card">
+
+                    <div class="random-tip-icon">
+                        💡
+                    </div>
+
+                    <div class="random-tip-content">
+
+                        <span class="tips-small-label">
+                            Random Fitness Tip
+                        </span>
+
+                        <h2 id="randomTipTitle">
+                            Start with a short warm-up
+                        </h2>
+
+                        <p id="randomTipText">
+                            Warm up for a few minutes before beginning
+                            your main workout.
+                        </p>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="newRandomTipButton"
+                    >
+                        Show Another Tip
+                    </button>
+
+                </section>
+
+                <!-- ======================================
+                     FAVOURITE SUMMARY
+                ======================================= -->
+                <section class="favourite-tips-panel">
+
+                    <div class="favourite-tips-content">
+
+                        <div class="favourite-tips-icon">
+                            ♥
+                        </div>
+
+                        <div>
+
+                            <span class="tips-small-label">
+                                Saved Tips
+                            </span>
+
+                            <h2>
+                                <span id="favouriteTipsCount">
+                                    0
+                                </span>
+                                favourite tips
+                            </h2>
+
+                            <p id="favouriteTipsMessage">
+                                Save useful tips so you can find them quickly.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="button button-outline"
+                        id="showFavouritesButton"
+                        aria-pressed="false"
+                    >
+                        Show Favourites
+                    </button>
+
+                </section>
+
+                <!-- ======================================
+                     SEARCH AND FILTERS
+                ======================================= -->
+                <section class="tips-filter-panel">
+
+                    <div class="tips-filter-heading">
+
+                        <div>
+
+                            <span class="tips-small-label">
+                                Find Advice
+                            </span>
+
+                            <h2>
+                                Search Fitness Tips
+                            </h2>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="button button-light button-small"
+                            id="resetTipsFiltersButton"
+                        >
+                            Reset Filters
+                        </button>
+
+                    </div>
+
+                    <div class="tips-filter-grid">
+
+                        <div class="form-group">
+
+                            <label
+                                for="tipsSearch"
+                                class="form-label"
+                            >
+                                Search tips
+                            </label>
+
+                            <div class="tips-search-box">
+
+                                <span
+                                    class="tips-search-icon"
+                                    aria-hidden="true"
+                                >
+                                    🔍
+                                </span>
+
+                                <input
+                                    type="search"
+                                    id="tipsSearch"
+                                    class="form-control"
+                                    placeholder="Search by title or keyword"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label
+                                for="tipsCategoryFilter"
+                                class="form-label"
+                            >
+                                Category
+                            </label>
+
+                            <select
+                                id="tipsCategoryFilter"
+                                class="form-control"
+                            >
+                                <option value="all">
+                                    All categories
+                                </option>
+
+                                <option value="Exercise">
+                                    Exercise
+                                </option>
+
+                                <option value="Hydration">
+                                    Hydration
+                                </option>
+
+                                <option value="Recovery">
+                                    Recovery
+                                </option>
+
+                                <option value="Safety">
+                                    Safety
+                                </option>
+
+                                <option value="Nutrition">
+                                    Nutrition
+                                </option>
+
+                                <option value="Motivation">
+                                    Motivation
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ======================================
+                     RESULTS HEADER
+                ======================================= -->
+                <section class="tips-results-header">
+
+                    <div>
+
+                        <span class="tips-small-label">
+                            Healthy Advice
+                        </span>
+
+                        <h2>
+                            Fitness Tip Collection
+                        </h2>
+
+                    </div>
+
+                    <p id="tipsResultCount">
+                        0 tips found
+                    </p>
+
+                </section>
+
+                <!-- ======================================
+                     TIP CARDS
+                ======================================= -->
+                <div
+                    class="fitness-tips-grid"
+                    id="fitnessTipsContainer"
+                >
+                    <!-- Generated by JavaScript -->
+                </div>
+
+                <!-- ======================================
+                     EMPTY STATE
+                ======================================= -->
+                <div
+                    class="tips-empty-state hidden"
+                    id="tipsEmptyState"
+                >
+                    <div class="tips-empty-icon">
+                        🔎
+                    </div>
+
+                    <h2>
+                        No fitness tips found
+                    </h2>
+
+                    <p>
+                        Try changing your search or category filter.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="emptyTipsResetButton"
+                    >
+                        Show All Tips
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             HEALTHY HABITS
+        =============================================== -->
+        <section class="section section-soft">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Daily Habits
+                    </span>
+
+                    <h2 class="section-title">
+                        Keep Your Routine Simple
+                    </h2>
+
+                    <p class="section-description">
+                        Healthy progress usually comes from small
+                        actions repeated consistently.
+                    </p>
+
+                </div>
+
+                <div class="healthy-habits-grid">
+
+                    <article class="healthy-habit-card">
+
+                        <div class="healthy-habit-icon">
+                            🏃
+                        </div>
+
+                        <h3>
+                            Move Regularly
+                        </h3>
+
+                        <p>
+                            Short periods of movement throughout the
+                            day can support your fitness routine.
+                        </p>
+
+                    </article>
+
+                    <article class="healthy-habit-card">
+
+                        <div class="healthy-habit-icon">
+                            💧
+                        </div>
+
+                        <h3>
+                            Drink Water
+                        </h3>
+
+                        <p>
+                            Record your intake and drink water at
+                            regular times during the day.
+                        </p>
+
+                    </article>
+
+                    <article class="healthy-habit-card">
+
+                        <div class="healthy-habit-icon">
+                            😴
+                        </div>
+
+                        <h3>
+                            Rest Properly
+                        </h3>
+
+                        <p>
+                            Give your body enough rest between difficult
+                            workouts and maintain good sleep habits.
+                        </p>
+
+                    </article>
+
+                    <article class="healthy-habit-card">
+
+                        <div class="healthy-habit-icon">
+                            📈
+                        </div>
+
+                        <h3>
+                            Track Progress
+                        </h3>
+
+                        <p>
+                            Record completed activities so you can
+                            notice improvements over time.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                    aria-label="FitPlanner home"
+                >
+                    <img src="images/logo.png" alt="" class="footer-logo-image">
+                    <span>FitPlanner</span>
+                </a>
+
+                <p>
+                    A simple website for planning workouts,
+                    tracking hydration, and monitoring fitness
+                    progress.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Fitness Tools
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="workout-plans.html">
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="exercises.html">
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="workout-tracker.html">
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="water-tracker.html">
+                            Water Tracker
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Information
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="progress.html">
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fitness-tips.html">
+                            Fitness Tips
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy;
+                    <span id="currentYear"></span>
+                    Simple Fitness Planner. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<button
+    type="button"
+    class="scroll-top-button"
+    id="scrollTopButton"
+    aria-label="Scroll to the top of the page"
+>
+    ↑
+</button>
+
+</body>
+</html>

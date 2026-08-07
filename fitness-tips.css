@@ -1,0 +1,641 @@
+/* =========================================================
+   SIMPLE FITNESS PLANNER
+   FITNESS TIPS PAGE
+========================================================= */
+
+.fitness-tips-section {
+    background-color: var(--background-color);
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.tips-message {
+    display: none;
+    margin-bottom: 24px;
+    padding: 15px 18px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-medium);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.tips-message.visible {
+    display: block;
+}
+
+.tips-message.success {
+    color: var(--success-color);
+    background-color: var(--success-light);
+    border-color: rgba(45, 157, 91, 0.25);
+}
+
+.tips-message.info {
+    color: var(--info-color);
+    background-color: var(--info-light);
+    border-color: rgba(45, 130, 199, 0.25);
+}
+
+.tips-message.error {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+    border-color: rgba(217, 83, 79, 0.25);
+}
+
+
+/* =========================================================
+   SMALL LABEL
+========================================================= */
+
+.tips-small-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   RANDOM TIP CARD
+========================================================= */
+
+.random-tip-card {
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+    gap: 22px;
+    align-items: center;
+    margin-bottom: 28px;
+    padding: 28px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--warning-light),
+            var(--surface-color)
+        );
+    border: 1px solid rgba(224, 168, 0, 0.24);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.random-tip-icon {
+    width: 68px;
+    height: 68px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    background-color: var(--surface-color);
+    box-shadow: var(--shadow-small);
+    font-size: 2rem;
+}
+
+.random-tip-content h2 {
+    margin-bottom: 7px;
+    font-size: 1.35rem;
+}
+
+.random-tip-content p {
+    max-width: 680px;
+}
+
+
+/* =========================================================
+   FAVOURITE PANEL
+========================================================= */
+
+.favourite-tips-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    margin-bottom: 28px;
+    padding: 24px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-light),
+            var(--surface-color)
+        );
+    border: 1px solid rgba(58, 134, 255, 0.22);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.favourite-tips-content {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.favourite-tips-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: var(--danger-color);
+    background-color: var(--surface-color);
+    border-radius: 16px;
+    box-shadow: var(--shadow-small);
+    font-size: 1.5rem;
+}
+
+.favourite-tips-panel h2 {
+    margin-bottom: 4px;
+    font-size: 1.3rem;
+}
+
+.favourite-tips-panel p {
+    font-size: 0.86rem;
+}
+
+#showFavouritesButton.active {
+    color: var(--surface-color);
+    background-color: var(--primary-color);
+}
+
+
+/* =========================================================
+   FILTER PANEL
+========================================================= */
+
+.tips-filter-panel {
+    margin-bottom: 38px;
+    padding: 28px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.tips-filter-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.tips-filter-heading h2,
+.tips-results-header h2 {
+    font-size: 1.45rem;
+}
+
+.tips-filter-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(260px, 2fr)
+        minmax(190px, 1fr);
+    gap: 18px;
+}
+
+.tips-filter-grid .form-group {
+    margin-bottom: 0;
+}
+
+.tips-search-box {
+    position: relative;
+}
+
+.tips-search-box .form-control {
+    padding-left: 44px;
+}
+
+.tips-search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: var(--text-light);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   RESULTS HEADER
+========================================================= */
+
+.tips-results-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.tips-results-header p {
+    padding: 7px 12px;
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
+    border-radius: var(--radius-round);
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TIP GRID
+========================================================= */
+
+.fitness-tips-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+
+/* =========================================================
+   TIP CARD
+========================================================= */
+
+.fitness-tip-card {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+    transition:
+        transform var(--transition-medium),
+        box-shadow var(--transition-medium),
+        border-color var(--transition-medium);
+}
+
+.fitness-tip-card::before {
+    content: "";
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary-color),
+            var(--secondary-color)
+        );
+}
+
+.fitness-tip-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(58, 134, 255, 0.35);
+    box-shadow: var(--shadow-medium);
+}
+
+.fitness-tip-card.favourite {
+    border-color: rgba(217, 83, 79, 0.4);
+}
+
+.fitness-tip-card.favourite::before {
+    background:
+        linear-gradient(
+            90deg,
+            var(--danger-color),
+            #ff8b86
+        );
+}
+
+.fitness-tip-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 26px;
+}
+
+.fitness-tip-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.fitness-tip-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-light),
+            var(--secondary-light)
+        );
+    font-size: 1.7rem;
+}
+
+.tip-favourite-button {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 11px;
+    color: var(--text-light);
+    background-color: var(--surface-soft);
+    font-size: 1.2rem;
+    transition:
+        color var(--transition-fast),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.tip-favourite-button:hover,
+.tip-favourite-button.active {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+    border-color: rgba(217, 83, 79, 0.35);
+}
+
+.tip-category-badge {
+    display: inline-flex;
+    align-self: flex-start;
+    margin-bottom: 13px;
+    padding: 6px 10px;
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
+    border-radius: var(--radius-round);
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.fitness-tip-card h3 {
+    margin-bottom: 9px;
+    font-size: 1.2rem;
+}
+
+.tip-summary {
+    min-height: 68px;
+    margin-bottom: 18px;
+    font-size: 0.89rem;
+}
+
+
+/* =========================================================
+   TIP DETAILS
+========================================================= */
+
+.tip-details-section {
+    margin-bottom: 20px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tip-details-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 0;
+    border: none;
+    color: var(--text-dark);
+    background-color: transparent;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-align: left;
+}
+
+.tip-details-arrow {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
+}
+
+.tip-details-toggle[aria-expanded="true"]
+.tip-details-arrow {
+    transform: rotate(180deg);
+}
+
+.tip-details-content {
+    display: none;
+    padding-bottom: 16px;
+}
+
+.tip-details-content.open {
+    display: block;
+}
+
+.tip-detail-list {
+    display: grid;
+    gap: 9px;
+}
+
+.tip-detail-list li {
+    position: relative;
+    padding: 10px 12px 10px 34px;
+    color: var(--text-medium);
+    background-color: var(--surface-soft);
+    border-radius: 9px;
+    font-size: 0.82rem;
+}
+
+.tip-detail-list li::before {
+    content: "✓";
+    position: absolute;
+    top: 9px;
+    left: 11px;
+    color: var(--success-color);
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CARD FOOTER
+========================================================= */
+
+.tip-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.tip-card-note {
+    color: var(--text-light);
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.tips-empty-state {
+    max-width: 560px;
+    margin: 40px auto 0;
+    padding: 50px 28px;
+    text-align: center;
+    background-color: var(--surface-color);
+    border: 1px dashed var(--border-dark);
+    border-radius: var(--radius-large);
+}
+
+.tips-empty-icon {
+    width: 78px;
+    height: 78px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    font-size: 2rem;
+}
+
+.tips-empty-state h2 {
+    margin-bottom: 10px;
+}
+
+.tips-empty-state p {
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   HEALTHY HABITS
+========================================================= */
+
+.healthy-habits-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.healthy-habit-card {
+    padding: 25px;
+    text-align: center;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.healthy-habit-icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 18px;
+    border-radius: 16px;
+    background-color: var(--primary-light);
+    font-size: 1.55rem;
+}
+
+.healthy-habit-card h3 {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+.healthy-habit-card p {
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .fitness-tips-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .healthy-habits-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .random-tip-card {
+        grid-template-columns:
+            auto
+            minmax(0, 1fr);
+    }
+
+    .random-tip-card .button {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .favourite-tips-panel {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .favourite-tips-panel .button {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .tips-filter-heading,
+    .tips-results-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .tips-filter-grid,
+    .fitness-tips-grid,
+    .healthy-habits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tips-filter-heading .button {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .random-tip-card,
+    .favourite-tips-panel,
+    .tips-filter-panel,
+    .fitness-tip-content,
+    .healthy-habit-card {
+        padding: 21px;
+    }
+
+    .random-tip-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .random-tip-icon {
+        margin-inline: auto;
+    }
+
+    .favourite-tips-content {
+        align-items: flex-start;
+    }
+
+    .fitness-tip-header {
+        align-items: center;
+    }
+
+}

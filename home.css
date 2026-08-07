@@ -1,0 +1,868 @@
+/* =========================================================
+   SIMPLE FITNESS PLANNER
+   HOME PAGE STYLES
+========================================================= */
+
+
+/* =========================================================
+   1. HERO SECTION
+========================================================= */
+
+.home-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 95px 0;
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(58, 134, 255, 0.15),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(56, 176, 0, 0.12),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            var(--surface-color),
+            var(--primary-light)
+        );
+}
+
+.home-hero::before {
+    content: "";
+    position: absolute;
+    top: -140px;
+    right: -130px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background-color: rgba(58, 134, 255, 0.07);
+}
+
+.home-hero::after {
+    content: "";
+    position: absolute;
+    bottom: -180px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: rgba(56, 176, 0, 0.06);
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(380px, 0.85fr);
+    gap: 65px;
+    align-items: center;
+}
+
+.hero-label {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 18px;
+    padding: 8px 14px;
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
+    border: 1px solid rgba(58, 134, 255, 0.2);
+    border-radius: var(--radius-round);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    max-width: 720px;
+    margin-bottom: 22px;
+    font-size: clamp(2.7rem, 6vw, 5rem);
+    letter-spacing: -2.8px;
+    line-height: 1.05;
+}
+
+.hero-description {
+    max-width: 680px;
+    margin-bottom: 30px;
+    font-size: 1.08rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 30px;
+}
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    color: var(--text-medium);
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+.hero-features span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hero-features strong {
+    color: var(--secondary-color);
+}
+
+
+/* =========================================================
+   2. HERO DASHBOARD
+========================================================= */
+
+.hero-dashboard {
+    position: relative;
+    min-height: 450px;
+    padding: 28px;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(234, 242, 255, 0.96)
+        );
+    border: 1px solid rgba(58, 134, 255, 0.18);
+    border-radius: 30px;
+    box-shadow: var(--shadow-large);
+}
+
+.hero-dashboard::before {
+    content: "";
+    position: absolute;
+    right: -70px;
+    bottom: -70px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background-color: rgba(56, 176, 0, 0.08);
+}
+
+.dashboard-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.dashboard-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.dashboard-header h2 {
+    font-size: 1.2rem;
+}
+
+.dashboard-status {
+    padding: 7px 11px;
+    color: var(--success-color);
+    background-color: var(--success-light);
+    border-radius: var(--radius-round);
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.dashboard-visual {
+    position: relative;
+    height: 275px;
+}
+
+.main-fitness-circle {
+    position: absolute;
+    top: 42px;
+    left: 50%;
+    width: 190px;
+    height: 190px;
+    display: grid;
+    place-items: center;
+    color: var(--surface-color);
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-color),
+            #6ba5ff
+        );
+    border-radius: 50%;
+    box-shadow: var(--shadow-medium);
+    font-size: 5rem;
+    transform: translateX(-50%);
+}
+
+.floating-fitness-icon {
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    display: grid;
+    place-items: center;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    box-shadow: var(--shadow-medium);
+    font-size: 1.8rem;
+}
+
+.water-icon {
+    top: 26px;
+    left: 5%;
+}
+
+.fire-icon {
+    right: 4%;
+    bottom: 16px;
+}
+
+.strength-icon {
+    left: 9%;
+    bottom: 7px;
+}
+
+.dashboard-message {
+    position: relative;
+    z-index: 2;
+    padding: 18px;
+    text-align: center;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+}
+
+.dashboard-message strong {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--text-dark);
+}
+
+.dashboard-message span {
+    color: var(--text-medium);
+    font-size: 0.86rem;
+}
+
+
+/* =========================================================
+   3. MOTIVATIONAL QUOTE
+========================================================= */
+
+.quote-section {
+    padding: 28px 0 0;
+}
+
+.quote-card {
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+    gap: 22px;
+    align-items: center;
+    padding: 24px 28px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.quote-symbol {
+    color: var(--primary-color);
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 0.8;
+}
+
+.quote-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--primary-color);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.quote-content blockquote {
+    color: var(--text-dark);
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition:
+        opacity var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+.quote-content blockquote.quote-changing {
+    opacity: 0;
+    transform: translateY(5px);
+}
+
+
+/* =========================================================
+   4. DAILY SUMMARY
+========================================================= */
+
+.home-summary-section {
+    background-color: var(--background-color);
+}
+
+.home-summary-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+    transition:
+        transform var(--transition-medium),
+        box-shadow var(--transition-medium),
+        border-color var(--transition-medium);
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(58, 134, 255, 0.3);
+    box-shadow: var(--shadow-medium);
+}
+
+.summary-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.summary-icon {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    font-size: 1.5rem;
+}
+
+.workout-summary-icon {
+    color: var(--primary-color);
+    background-color: var(--primary-light);
+}
+
+.water-summary-icon {
+    color: var(--info-color);
+    background-color: var(--info-light);
+}
+
+.time-summary-icon {
+    color: #8c6800;
+    background-color: var(--warning-light);
+}
+
+.summary-card h3 {
+    margin-bottom: 8px;
+    font-size: 1.25rem;
+}
+
+.summary-card > p {
+    min-height: 52px;
+    margin-bottom: 16px;
+    font-size: 0.91rem;
+}
+
+.water-progress-fill {
+    background:
+        linear-gradient(
+            90deg,
+            var(--info-color),
+            #68b8ef
+        );
+}
+
+.summary-values {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.summary-value-box {
+    padding: 14px;
+    text-align: center;
+    background-color: var(--surface-soft);
+    border-radius: 11px;
+}
+
+.summary-value-box strong {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--text-dark);
+    font-size: 1.35rem;
+}
+
+.summary-value-box span {
+    color: var(--text-light);
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+.summary-card .button {
+    margin-top: auto;
+}
+
+.workout-time-display {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 28px 0;
+}
+
+.workout-time-display strong {
+    color: var(--text-dark);
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.workout-time-display span {
+    color: var(--text-medium);
+    font-weight: 600;
+}
+
+.recommended-time {
+    margin-bottom: 22px;
+    padding: 16px;
+    background-color: var(--warning-light);
+    border-radius: 11px;
+}
+
+.recommended-time span,
+.recommended-time strong {
+    display: block;
+}
+
+.recommended-time span {
+    margin-bottom: 3px;
+    color: #856400;
+    font-size: 0.8rem;
+}
+
+.recommended-time strong {
+    color: var(--text-dark);
+}
+
+
+/* =========================================================
+   5. QUICK ACCESS
+========================================================= */
+
+.quick-access-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.quick-access-card {
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+    gap: 16px;
+    align-items: center;
+    padding: 22px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-small);
+    transition:
+        transform var(--transition-medium),
+        box-shadow var(--transition-medium),
+        border-color var(--transition-medium);
+}
+
+.quick-access-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-medium);
+}
+
+.quick-access-icon {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background-color: var(--primary-light);
+    font-size: 1.45rem;
+}
+
+.quick-access-content h3 {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.quick-access-content p {
+    font-size: 0.82rem;
+}
+
+.quick-access-arrow {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    transition: transform var(--transition-fast);
+}
+
+.quick-access-card:hover .quick-access-arrow {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   6. BENEFITS
+========================================================= */
+
+.benefits-section {
+    background-color: var(--surface-color);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.benefit-card {
+    position: relative;
+    overflow: hidden;
+    padding: 26px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+    transition:
+        transform var(--transition-medium),
+        box-shadow var(--transition-medium);
+}
+
+.benefit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+}
+
+.benefit-number {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    color: var(--primary-light);
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.benefit-icon {
+    position: relative;
+    z-index: 1;
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: var(--primary-light);
+    font-size: 1.5rem;
+}
+
+.benefit-card h3 {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+    font-size: 1.08rem;
+}
+
+.benefit-card p {
+    position: relative;
+    z-index: 1;
+    font-size: 0.88rem;
+}
+
+
+/* =========================================================
+   7. CALL TO ACTION
+========================================================= */
+
+.home-cta-section {
+    padding: 30px 0 80px;
+    background-color: var(--surface-color);
+}
+
+.home-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    padding: 45px;
+    overflow: hidden;
+    color: var(--surface-color);
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary-color)
+        );
+    border-radius: 26px;
+    box-shadow:
+        0 20px 45px rgba(58, 134, 255, 0.24);
+}
+
+.home-cta-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--accent-color);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.home-cta h2 {
+    margin-bottom: 10px;
+    color: var(--surface-color);
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+}
+
+.home-cta p {
+    max-width: 680px;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.home-cta-buttons {
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.home-cta-outline {
+    color: var(--surface-color);
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+.home-cta-outline:hover {
+    color: var(--primary-dark);
+    background-color: var(--surface-color);
+    border-color: var(--surface-color);
+}
+
+
+/* =========================================================
+   8. RESPONSIVE HOME PAGE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .hero-container {
+        grid-template-columns:
+            minmax(0, 1fr)
+            380px;
+        gap: 40px;
+    }
+
+    .quick-access-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .benefits-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .home-hero {
+        padding: 75px 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-inline: auto;
+    }
+
+    .hero-buttons,
+    .hero-features {
+        justify-content: center;
+    }
+
+    .hero-dashboard {
+        width: min(520px, 100%);
+        margin-inline: auto;
+    }
+
+    .home-summary-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .summary-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .home-cta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .home-cta-buttons {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .home-hero {
+        padding: 60px 0;
+    }
+
+    .hero-content h1 {
+        letter-spacing: -1.8px;
+    }
+
+    .quote-card {
+        grid-template-columns:
+            auto
+            minmax(0, 1fr);
+    }
+
+    .quote-card .button {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .home-summary-grid,
+    .quick-access-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card:last-child {
+        grid-column: auto;
+    }
+
+    .home-cta {
+        padding: 32px;
+    }
+
+    .home-cta-buttons {
+        flex-direction: column;
+    }
+
+    .home-cta-buttons .button {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .hero-content h1 {
+        font-size: 2.6rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .button {
+        width: 100%;
+    }
+
+    .hero-features {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hero-dashboard {
+        min-height: 410px;
+        padding: 22px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+    }
+
+    .dashboard-visual {
+        height: 235px;
+    }
+
+    .main-fitness-circle {
+        width: 155px;
+        height: 155px;
+        font-size: 4rem;
+    }
+
+    .floating-fitness-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .quote-card {
+        padding: 20px;
+    }
+
+    .quote-symbol {
+        font-size: 3rem;
+    }
+
+    .quick-access-card {
+        grid-template-columns:
+            auto
+            minmax(0, 1fr);
+    }
+
+    .quick-access-arrow {
+        display: none;
+    }
+
+    .home-cta {
+        padding: 26px 22px;
+    }
+
+}

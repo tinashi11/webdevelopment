@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Track your daily water intake and work towards your hydration goal."
+    >
+
+    <meta
+        name="author"
+        content="Simple Fitness Planner"
+    >
+
+    <title>Water Tracker | Simple Fitness Planner</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/water-tracker.css">
+
+    <script src="js/main.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/water-tracker.js" defer></script>
+</head>
+
+<body data-page="water-tracker">
+
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<div class="site-wrapper">
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <div class="container navbar-container">
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="FitPlanner home"
+            >
+                <img src="images/logo.png" alt="FitPlanner logo" class="logo-image">
+
+                <span class="logo-text">
+                    FitPlanner
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation menu"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+                <ul class="navigation-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="navigation-link"
+                            data-page-link="home"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-plans.html"
+                            class="navigation-link"
+                            data-page-link="workout-plans"
+                        >
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="exercises.html"
+                            class="navigation-link"
+                            data-page-link="exercises"
+                        >
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-tracker.html"
+                            class="navigation-link"
+                            data-page-link="workout-tracker"
+                        >
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="water-tracker.html"
+                            class="navigation-link"
+                            data-page-link="water-tracker"
+                        >
+                            Water Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="progress.html"
+                            class="navigation-link"
+                            data-page-link="progress"
+                        >
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="fitness-tips.html"
+                            class="navigation-link"
+                            data-page-link="fitness-tips"
+                        >
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+    <main
+        class="main-content"
+        id="mainContent"
+    >
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <span class="page-label">
+                    Stay Hydrated
+                </span>
+
+                <h1>
+                    Water Tracker
+                </h1>
+
+                <p>
+                    Record each glass of water and work towards
+                    your daily hydration goal.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="page-content water-page-section">
+
+            <div class="container">
+
+                <div
+                    class="water-message"
+                    id="waterMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <div class="water-layout">
+
+                    <!-- Main tracker -->
+                    <div class="water-main-column">
+
+                        <section class="water-tracker-card">
+
+                            <div class="water-card-header">
+
+                                <div>
+                                    <span class="water-small-label">
+                                        Today’s Hydration
+                                    </span>
+
+                                    <h2 id="waterTrackerDate">
+                                        Today
+                                    </h2>
+                                </div>
+
+                                <span
+                                    class="water-status-badge"
+                                    id="waterStatusBadge"
+                                >
+                                    Start Drinking
+                                </span>
+
+                            </div>
+
+                            <div class="water-main-display">
+
+                                <div
+                                    class="water-drop-visual"
+                                    id="waterDropVisual"
+                                    aria-hidden="true"
+                                >
+                                    💧
+                                </div>
+
+                                <div class="water-count-display">
+
+                                    <strong id="waterConsumedDisplay">
+                                        0
+                                    </strong>
+
+                                    <span>
+                                        of
+                                        <strong id="waterGoalDisplay">
+                                            8
+                                        </strong>
+                                        glasses
+                                    </span>
+
+                                </div>
+
+                                <p id="waterHydrationMessage">
+                                    Start recording your water intake.
+                                </p>
+
+                            </div>
+
+                            <div class="progress-wrapper">
+
+                                <div class="progress-details">
+
+                                    <span>
+                                        Daily progress
+                                    </span>
+
+                                    <strong id="waterProgressPercentage">
+                                        0%
+                                    </strong>
+
+                                </div>
+
+                                <div
+                                    class="progress-bar water-main-progress"
+                                    id="waterProgressBar"
+                                    role="progressbar"
+                                    aria-label="Daily water progress"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="0"
+                                >
+                                    <div
+                                        class="progress-fill water-main-progress-fill"
+                                        id="waterProgressFill"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                            <div class="water-statistics">
+
+                                <div class="water-stat-box">
+
+                                    <strong id="waterConsumedStat">
+                                        0
+                                    </strong>
+
+                                    <span>
+                                        Consumed
+                                    </span>
+
+                                </div>
+
+                                <div class="water-stat-box">
+
+                                    <strong id="waterRemainingStat">
+                                        8
+                                    </strong>
+
+                                    <span>
+                                        Remaining
+                                    </span>
+
+                                </div>
+
+                                <div class="water-stat-box">
+
+                                    <strong id="waterGoalStat">
+                                        8
+                                    </strong>
+
+                                    <span>
+                                        Daily Goal
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="water-control-buttons">
+
+                                <button
+                                    type="button"
+                                    class="button button-primary button-large"
+                                    id="addWaterButton"
+                                >
+                                    + Add One Glass
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="button button-outline button-large"
+                                    id="removeWaterButton"
+                                >
+                                    − Remove One Glass
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                        <!-- Visual glasses -->
+                        <section class="water-glasses-card">
+
+                            <div class="water-section-heading">
+
+                                <div>
+                                    <span class="water-small-label">
+                                        Visual Progress
+                                    </span>
+
+                                    <h2>
+                                        Today’s Water Glasses
+                                    </h2>
+                                </div>
+
+                                <span id="waterGlassSummary">
+                                    0 of 8
+                                </span>
+
+                            </div>
+
+                            <div
+                                class="water-glasses-grid"
+                                id="waterGlassesContainer"
+                                aria-label="Visual water glass progress"
+                            >
+                                <!-- Generated by JavaScript -->
+                            </div>
+
+                        </section>
+
+                        <!-- Goal form -->
+                        <section class="water-goal-card">
+
+                            <div class="water-section-heading">
+
+                                <div>
+                                    <span class="water-small-label">
+                                        Daily Goal
+                                    </span>
+
+                                    <h2>
+                                        Set Your Water Goal
+                                    </h2>
+                                </div>
+
+                                <span
+                                    class="water-goal-icon"
+                                    aria-hidden="true"
+                                >
+                                    🎯
+                                </span>
+
+                            </div>
+
+                            <form
+                                id="waterGoalForm"
+                                class="water-goal-form"
+                                novalidate
+                            >
+
+                                <div class="form-group">
+
+                                    <label
+                                        for="waterGoalInput"
+                                        class="form-label"
+                                    >
+                                        Number of glasses
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="waterGoalInput"
+                                        class="form-control"
+                                        min="1"
+                                        max="20"
+                                        step="1"
+                                        value="8"
+                                    >
+
+                                    <span class="form-help">
+                                        Choose a daily goal between 1 and 20 glasses.
+                                    </span>
+
+                                    <span
+                                        class="form-error"
+                                        id="waterGoalError"
+                                    ></span>
+
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    class="button button-primary"
+                                >
+                                    Save Water Goal
+                                </button>
+
+                            </form>
+
+                        </section>
+
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="water-sidebar">
+
+                        <section class="water-summary-card">
+
+                            <span class="water-small-label">
+                                Daily Summary
+                            </span>
+
+                            <h2>
+                                Hydration Overview
+                            </h2>
+
+                            <div class="water-summary-list">
+
+                                <div class="water-summary-item">
+
+                                    <span>
+                                        Current intake
+                                    </span>
+
+                                    <strong id="waterCurrentSummary">
+                                        0 glasses
+                                    </strong>
+
+                                </div>
+
+                                <div class="water-summary-item">
+
+                                    <span>
+                                        Remaining
+                                    </span>
+
+                                    <strong id="waterRemainingSummary">
+                                        8 glasses
+                                    </strong>
+
+                                </div>
+
+                                <div class="water-summary-item">
+
+                                    <span>
+                                        Goal status
+                                    </span>
+
+                                    <strong id="waterGoalStatusSummary">
+                                        Not started
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <section class="water-actions-card">
+
+                            <span class="water-small-label">
+                                Tracker Actions
+                            </span>
+
+                            <h2>
+                                Manage Today’s Data
+                            </h2>
+
+                            <p>
+                                Reset today’s intake or save the
+                                current result to your water history.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="button button-secondary button-block"
+                                id="saveWaterHistoryButton"
+                            >
+                                Save Today to History
+                            </button>
+
+                            <button
+                                type="button"
+                                class="button button-danger button-block"
+                                id="resetWaterButton"
+                            >
+                                Reset Today’s Intake
+                            </button>
+
+                        </section>
+
+                        <section class="water-tip-card">
+
+                            <div
+                                class="water-tip-icon"
+                                aria-hidden="true"
+                            >
+                                💡
+                            </div>
+
+                            <h2>
+                                Hydration Reminder
+                            </h2>
+
+                            <p>
+                                Drink water regularly throughout the
+                                day instead of drinking your entire
+                                goal at one time.
+                            </p>
+
+                            <a
+                                href="fitness-tips.html"
+                                class="water-tip-link"
+                            >
+                                Read more fitness tips →
+                            </a>
+
+                        </section>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                    aria-label="FitPlanner home"
+                >
+                    <img src="images/logo.png" alt="" class="footer-logo-image">
+                    <span>FitPlanner</span>
+                </a>
+
+                <p>
+                    A simple website for planning workouts,
+                    tracking hydration, and monitoring fitness
+                    progress.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Fitness Tools</h2>
+
+                <ul>
+                    <li>
+                        <a href="workout-plans.html">
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="exercises.html">
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="workout-tracker.html">
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="water-tracker.html">
+                            Water Tracker
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Information</h2>
+
+                <ul>
+                    <li>
+                        <a href="progress.html">
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fitness-tips.html">
+                            Fitness Tips
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy;
+                    <span id="currentYear"></span>
+                    Simple Fitness Planner. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<button
+    type="button"
+    class="scroll-top-button"
+    id="scrollTopButton"
+    aria-label="Scroll to the top of the page"
+>
+    ↑
+</button>
+
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Review workout statistics, hydration records, streaks, and weekly fitness progress."
+    >
+
+    <meta
+        name="author"
+        content="Simple Fitness Planner"
+    >
+
+    <title>Progress | Simple Fitness Planner</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/progress.css">
+
+    <script src="js/main.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/progress.js" defer></script>
+</head>
+
+<body data-page="progress">
+
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<div class="site-wrapper">
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <div class="container navbar-container">
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="FitPlanner home"
+            >
+                <img src="images/logo.png" alt="FitPlanner logo" class="logo-image">
+
+                <span class="logo-text">
+                    FitPlanner
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation menu"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+                <ul class="navigation-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="navigation-link"
+                            data-page-link="home"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-plans.html"
+                            class="navigation-link"
+                            data-page-link="workout-plans"
+                        >
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="exercises.html"
+                            class="navigation-link"
+                            data-page-link="exercises"
+                        >
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-tracker.html"
+                            class="navigation-link"
+                            data-page-link="workout-tracker"
+                        >
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="water-tracker.html"
+                            class="navigation-link"
+                            data-page-link="water-tracker"
+                        >
+                            Water Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="progress.html"
+                            class="navigation-link"
+                            data-page-link="progress"
+                        >
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="fitness-tips.html"
+                            class="navigation-link"
+                            data-page-link="fitness-tips"
+                        >
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+    <main
+        class="main-content"
+        id="mainContent"
+    >
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <span class="page-label">
+                    Your Achievements
+                </span>
+
+                <h1>
+                    Fitness Progress
+                </h1>
+
+                <p>
+                    Review your workout history, water intake,
+                    weekly performance, and fitness streaks.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section class="page-content progress-page-section">
+
+            <div class="container">
+
+                <div
+                    class="progress-message"
+                    id="progressMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <!-- ======================================
+                     TOP SUMMARY CARDS
+                ======================================= -->
+                <section class="progress-summary-section">
+
+                    <div class="progress-section-heading">
+
+                        <div>
+                            <span class="progress-small-label">
+                                Overall Summary
+                            </span>
+
+                            <h2>
+                                Your Fitness Statistics
+                            </h2>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="button button-light button-small"
+                            id="refreshProgressButton"
+                        >
+                            Refresh Data
+                        </button>
+
+                    </div>
+
+                    <div class="progress-summary-grid">
+
+                        <article class="progress-summary-card">
+
+                            <div class="progress-summary-icon">
+                                🏆
+                            </div>
+
+                            <div>
+                                <span>
+                                    Workouts Completed
+                                </span>
+
+                                <strong id="totalWorkoutsCompleted">
+                                    0
+                                </strong>
+                            </div>
+
+                        </article>
+
+                        <article class="progress-summary-card">
+
+                            <div class="progress-summary-icon">
+                                ✅
+                            </div>
+
+                            <div>
+                                <span>
+                                    Exercises Completed
+                                </span>
+
+                                <strong id="totalExercisesCompleted">
+                                    0
+                                </strong>
+                            </div>
+
+                        </article>
+
+                        <article class="progress-summary-card">
+
+                            <div class="progress-summary-icon">
+                                ⏱️
+                            </div>
+
+                            <div>
+                                <span>
+                                    Workout Minutes
+                                </span>
+
+                                <strong id="totalWorkoutMinutes">
+                                    0
+                                </strong>
+                            </div>
+
+                        </article>
+
+                        <article class="progress-summary-card">
+
+                            <div class="progress-summary-icon">
+                                💧
+                            </div>
+
+                            <div>
+                                <span>
+                                    Water Glasses
+                                </span>
+
+                                <strong id="totalWaterGlasses">
+                                    0
+                                </strong>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+                <!-- ======================================
+                     CURRENT DAY PROGRESS
+                ======================================= -->
+                <section class="current-progress-grid">
+
+                    <article class="current-progress-card">
+
+                        <div class="current-progress-header">
+
+                            <div>
+                                <span class="progress-small-label">
+                                    Today
+                                </span>
+
+                                <h2>
+                                    Workout Progress
+                                </h2>
+                            </div>
+
+                            <span
+                                class="current-progress-percentage"
+                                id="todayWorkoutPercentage"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+                        <p id="todayWorkoutMessage">
+                            No workout is currently selected.
+                        </p>
+
+                        <div class="progress-wrapper">
+
+                            <div class="progress-details">
+
+                                <span id="todayWorkoutCompletedText">
+                                    0 of 0 completed
+                                </span>
+
+                                <span id="todayWorkoutRemainingText">
+                                    0 remaining
+                                </span>
+
+                            </div>
+
+                            <div
+                                class="progress-bar"
+                                id="todayWorkoutProgressBar"
+                                role="progressbar"
+                                aria-label="Today's workout progress"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                            >
+                                <div
+                                    class="progress-fill"
+                                    id="todayWorkoutProgressFill"
+                                ></div>
+                            </div>
+
+                        </div>
+
+                        <a
+                            href="workout-tracker.html"
+                            class="button button-primary button-block"
+                        >
+                            Open Workout Tracker
+                        </a>
+
+                    </article>
+
+                    <article class="current-progress-card">
+
+                        <div class="current-progress-header">
+
+                            <div>
+                                <span class="progress-small-label">
+                                    Today
+                                </span>
+
+                                <h2>
+                                    Water Progress
+                                </h2>
+                            </div>
+
+                            <span
+                                class="current-progress-percentage water-percentage"
+                                id="todayWaterPercentage"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+                        <p id="todayWaterMessage">
+                            No water has been recorded today.
+                        </p>
+
+                        <div class="progress-wrapper">
+
+                            <div class="progress-details">
+
+                                <span id="todayWaterConsumedText">
+                                    0 of 8 glasses
+                                </span>
+
+                                <span id="todayWaterRemainingText">
+                                    8 remaining
+                                </span>
+
+                            </div>
+
+                            <div
+                                class="progress-bar"
+                                id="todayWaterProgressBar"
+                                role="progressbar"
+                                aria-label="Today's water progress"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                            >
+                                <div
+                                    class="progress-fill progress-water-fill"
+                                    id="todayWaterProgressFill"
+                                ></div>
+                            </div>
+
+                        </div>
+
+                        <a
+                            href="water-tracker.html"
+                            class="button button-primary button-block"
+                        >
+                            Open Water Tracker
+                        </a>
+
+                    </article>
+
+                </section>
+
+                <!-- ======================================
+                     STREAKS
+                ======================================= -->
+                <section class="streak-section">
+
+                    <div class="progress-section-heading">
+
+                        <div>
+                            <span class="progress-small-label">
+                                Consistency
+                            </span>
+
+                            <h2>
+                                Current Streaks
+                            </h2>
+                        </div>
+
+                    </div>
+
+                    <div class="streak-grid">
+
+                        <article class="streak-card">
+
+                            <div class="streak-icon">
+                                🔥
+                            </div>
+
+                            <div>
+                                <span>
+                                    Workout Streak
+                                </span>
+
+                                <strong id="workoutStreakValue">
+                                    0 days
+                                </strong>
+
+                                <p>
+                                    Complete workouts on consecutive days.
+                                </p>
+                            </div>
+
+                        </article>
+
+                        <article class="streak-card">
+
+                            <div class="streak-icon water-streak-icon">
+                                💧
+                            </div>
+
+                            <div>
+                                <span>
+                                    Hydration Streak
+                                </span>
+
+                                <strong id="waterStreakValue">
+                                    0 days
+                                </strong>
+
+                                <p>
+                                    Reach your water goal on consecutive days.
+                                </p>
+                            </div>
+
+                        </article>
+
+                        <article class="streak-card">
+
+                            <div class="streak-icon best-streak-icon">
+                                ⭐
+                            </div>
+
+                            <div>
+                                <span>
+                                    Best Workout Day
+                                </span>
+
+                                <strong id="bestWorkoutDayValue">
+                                    No records
+                                </strong>
+
+                                <p id="bestWorkoutDayDescription">
+                                    Finish workouts to create statistics.
+                                </p>
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+                <!-- ======================================
+                     HISTORY
+                ======================================= -->
+                <section class="history-grid">
+
+                    <!-- Workout history -->
+                    <article class="history-card">
+
+                        <div class="history-card-header">
+
+                            <div>
+                                <span class="progress-small-label">
+                                    Recent Records
+                                </span>
+
+                                <h2>
+                                    Workout History
+                                </h2>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="button button-danger button-small"
+                                id="clearWorkoutHistoryButton"
+                            >
+                                Clear History
+                            </button>
+
+                        </div>
+
+                        <div
+                            class="history-list"
+                            id="workoutHistoryList"
+                        >
+                            <!-- Generated by JavaScript -->
+                        </div>
+
+                        <div
+                            class="history-empty-state hidden"
+                            id="workoutHistoryEmptyState"
+                        >
+                            <div aria-hidden="true">
+                                🏋️
+                            </div>
+
+                            <h3>
+                                No workout history
+                            </h3>
+
+                            <p>
+                                Finish a workout to create your first record.
+                            </p>
+                        </div>
+
+                    </article>
+
+                    <!-- Water history -->
+                    <article class="history-card">
+
+                        <div class="history-card-header">
+
+                            <div>
+                                <span class="progress-small-label">
+                                    Recent Records
+                                </span>
+
+                                <h2>
+                                    Water History
+                                </h2>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="button button-danger button-small"
+                                id="clearWaterHistoryButton"
+                            >
+                                Clear History
+                            </button>
+
+                        </div>
+
+                        <div
+                            class="history-list"
+                            id="waterHistoryList"
+                        >
+                            <!-- Generated by JavaScript -->
+                        </div>
+
+                        <div
+                            class="history-empty-state hidden"
+                            id="waterHistoryEmptyState"
+                        >
+                            <div aria-hidden="true">
+                                💧
+                            </div>
+
+                            <h3>
+                                No water history
+                            </h3>
+
+                            <p>
+                                Save a daily water record to create history.
+                            </p>
+                        </div>
+
+                    </article>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                    aria-label="FitPlanner home"
+                >
+                    <img src="images/logo.png" alt="" class="footer-logo-image">
+                    <span>FitPlanner</span>
+                </a>
+
+                <p>
+                    A simple website for planning workouts,
+                    tracking hydration, and monitoring fitness
+                    progress.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Fitness Tools</h2>
+
+                <ul>
+                    <li>
+                        <a href="workout-plans.html">
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="exercises.html">
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="workout-tracker.html">
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="water-tracker.html">
+                            Water Tracker
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Information</h2>
+
+                <ul>
+                    <li>
+                        <a href="progress.html">
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fitness-tips.html">
+                            Fitness Tips
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy;
+                    <span id="currentYear"></span>
+                    Simple Fitness Planner. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<button
+    type="button"
+    class="scroll-top-button"
+    id="scrollTopButton"
+    aria-label="Scroll to the top of the page"
+>
+    ↑
+</button>
+
+</body>
+</html>

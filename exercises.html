@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Browse strength, cardio, core, flexibility, warm-up, and cool-down exercises."
+    >
+
+    <meta
+        name="author"
+        content="Simple Fitness Planner"
+    >
+
+    <title>Exercises | Simple Fitness Planner</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Exercise-page CSS -->
+    <link rel="stylesheet" href="css/exercises.css">
+
+    <!-- Global JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/storage.js" defer></script>
+
+    <!-- Exercise-page JavaScript -->
+    <script src="js/exercises.js" defer></script>
+</head>
+
+<body data-page="exercises">
+
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<div class="site-wrapper">
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <div class="container navbar-container">
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="FitPlanner home"
+            >
+                <img src="images/logo.png" alt="FitPlanner logo" class="logo-image">
+
+                <span class="logo-text">
+                    FitPlanner
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation menu"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+                <ul class="navigation-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="navigation-link"
+                            data-page-link="home"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-plans.html"
+                            class="navigation-link"
+                            data-page-link="workout-plans"
+                        >
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="exercises.html"
+                            class="navigation-link"
+                            data-page-link="exercises"
+                        >
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-tracker.html"
+                            class="navigation-link"
+                            data-page-link="workout-tracker"
+                        >
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="water-tracker.html"
+                            class="navigation-link"
+                            data-page-link="water-tracker"
+                        >
+                            Water Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="progress.html"
+                            class="navigation-link"
+                            data-page-link="progress"
+                        >
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="fitness-tips.html"
+                            class="navigation-link"
+                            data-page-link="fitness-tips"
+                        >
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+    <main
+        class="main-content"
+        id="mainContent"
+    >
+
+        <!-- ==============================================
+             PAGE HEADER
+        =============================================== -->
+        <section class="page-header">
+
+            <div class="container">
+
+                <span class="page-label">
+                    Exercise Library
+                </span>
+
+                <h1>
+                    Exercises
+                </h1>
+
+                <p>
+                    Browse exercises by category and difficulty,
+                    read the instructions, and add exercises to
+                    your daily workout.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             EXERCISE LIBRARY
+        =============================================== -->
+        <section class="page-content exercise-library-section">
+
+            <div class="container">
+
+                <!-- Page message -->
+                <div
+                    class="exercise-message"
+                    id="exerciseMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <!-- Selected-workout summary -->
+                <div class="selected-workout-panel">
+
+                    <div class="selected-workout-content">
+
+                        <div class="selected-workout-icon">
+                            ✅
+                        </div>
+
+                        <div>
+                            <span class="selected-workout-label">
+                                Today’s Workout
+                            </span>
+
+                            <h2>
+                                <span id="selectedExerciseCount">
+                                    0
+                                </span>
+                                exercises selected
+                            </h2>
+
+                            <p id="selectedWorkoutMessage">
+                                Add exercises from the library to
+                                create your daily routine.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="workout-tracker.html"
+                        class="button button-primary"
+                    >
+                        Open Workout Tracker
+                    </a>
+
+                </div>
+
+                <!-- ======================================
+                     FILTERS
+                ======================================= -->
+                <div class="exercise-filter-panel">
+
+                    <div class="exercise-filter-heading">
+
+                        <div>
+                            <span class="exercise-small-label">
+                                Find an Exercise
+                            </span>
+
+                            <h2>
+                                Search the Exercise Library
+                            </h2>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="button button-light button-small"
+                            id="resetExerciseFiltersButton"
+                        >
+                            Reset Filters
+                        </button>
+
+                    </div>
+
+                    <div class="exercise-filter-grid">
+
+                        <div class="form-group">
+
+                            <label
+                                for="exerciseSearch"
+                                class="form-label"
+                            >
+                                Search exercises
+                            </label>
+
+                            <div class="exercise-search-box">
+
+                                <span
+                                    class="exercise-search-icon"
+                                    aria-hidden="true"
+                                >
+                                    🔍
+                                </span>
+
+                                <input
+                                    type="search"
+                                    id="exerciseSearch"
+                                    class="form-control"
+                                    placeholder="Search by exercise or muscle group"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label
+                                for="exerciseCategoryFilter"
+                                class="form-label"
+                            >
+                                Category
+                            </label>
+
+                            <select
+                                id="exerciseCategoryFilter"
+                                class="form-control"
+                            >
+                                <option value="all">
+                                    All categories
+                                </option>
+
+                                <option value="Warm-up">
+                                    Warm-up
+                                </option>
+
+                                <option value="Cardio">
+                                    Cardio
+                                </option>
+
+                                <option value="Strength">
+                                    Strength
+                                </option>
+
+                                <option value="Core">
+                                    Core
+                                </option>
+
+                                <option value="Flexibility">
+                                    Flexibility
+                                </option>
+
+                                <option value="Cool-down">
+                                    Cool-down
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label
+                                for="exerciseDifficultyFilter"
+                                class="form-label"
+                            >
+                                Difficulty
+                            </label>
+
+                            <select
+                                id="exerciseDifficultyFilter"
+                                class="form-control"
+                            >
+                                <option value="all">
+                                    All difficulties
+                                </option>
+
+                                <option value="Beginner">
+                                    Beginner
+                                </option>
+
+                                <option value="Intermediate">
+                                    Intermediate
+                                </option>
+
+                                <option value="Advanced">
+                                    Advanced
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ======================================
+                     RESULTS HEADER
+                ======================================= -->
+                <div class="exercise-results-header">
+
+                    <div>
+                        <span class="exercise-small-label">
+                            Available Exercises
+                        </span>
+
+                        <h2>
+                            Exercise Collection
+                        </h2>
+                    </div>
+
+                    <p id="exerciseResultCount">
+                        0 exercises found
+                    </p>
+
+                </div>
+
+                <!-- ======================================
+                     EXERCISE CARDS
+                ======================================= -->
+                <div
+                    class="exercise-grid"
+                    id="exerciseListContainer"
+                >
+                    <!-- Cards are created by JavaScript. -->
+                </div>
+
+                <!-- ======================================
+                     EMPTY STATE
+                ======================================= -->
+                <div
+                    class="exercise-empty-state hidden"
+                    id="exerciseEmptyState"
+                >
+                    <div class="exercise-empty-icon">
+                        🔎
+                    </div>
+
+                    <h2>
+                        No exercises found
+                    </h2>
+
+                    <p>
+                        Try changing the search, category,
+                        or difficulty filter.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="emptyExerciseResetButton"
+                    >
+                        Show All Exercises
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             EXERCISE SAFETY
+        =============================================== -->
+        <section class="section section-soft">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Exercise Safety
+                    </span>
+
+                    <h2 class="section-title">
+                        Exercise Carefully
+                    </h2>
+
+                    <p class="section-description">
+                        Always use controlled movements and stop
+                        exercising if you feel unusual pain or discomfort.
+                    </p>
+
+                </div>
+
+                <div class="exercise-safety-grid">
+
+                    <article class="exercise-safety-card">
+
+                        <div class="exercise-safety-icon">
+                            🔥
+                        </div>
+
+                        <h3>
+                            Warm Up First
+                        </h3>
+
+                        <p>
+                            Prepare your muscles and joints before
+                            beginning more difficult exercises.
+                        </p>
+
+                    </article>
+
+                    <article class="exercise-safety-card">
+
+                        <div class="exercise-safety-icon">
+                            🎯
+                        </div>
+
+                        <h3>
+                            Use Good Form
+                        </h3>
+
+                        <p>
+                            Complete every movement slowly and use
+                            the correct exercise technique.
+                        </p>
+
+                    </article>
+
+                    <article class="exercise-safety-card">
+
+                        <div class="exercise-safety-icon">
+                            🥤
+                        </div>
+
+                        <h3>
+                            Stay Hydrated
+                        </h3>
+
+                        <p>
+                            Drink water regularly, especially during
+                            longer or more difficult workouts.
+                        </p>
+
+                    </article>
+
+                    <article class="exercise-safety-card">
+
+                        <div class="exercise-safety-icon">
+                            🛑
+                        </div>
+
+                        <h3>
+                            Know When to Stop
+                        </h3>
+
+                        <p>
+                            Rest when necessary and stop immediately
+                            if an exercise causes sharp pain.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                    aria-label="FitPlanner home"
+                >
+                    <img src="images/logo.png" alt="" class="footer-logo-image">
+
+                    <span>
+                        FitPlanner
+                    </span>
+                </a>
+
+                <p>
+                    A simple website for planning workouts,
+                    tracking hydration, and monitoring fitness
+                    progress.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Fitness Tools
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="workout-plans.html">
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="exercises.html">
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="workout-tracker.html">
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="water-tracker.html">
+                            Water Tracker
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Information
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="progress.html">
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fitness-tips.html">
+                            Fitness Tips
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy;
+                    <span id="currentYear"></span>
+                    Simple Fitness Planner. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<button
+    type="button"
+    class="scroll-top-button"
+    id="scrollTopButton"
+    aria-label="Scroll to the top of the page"
+>
+    ↑
+</button>
+
+</body>
+</html>

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Browse beginner-friendly workout plans for different fitness levels, goals, and available times."
+    >
+
+    <meta
+        name="author"
+        content="Simple Fitness Planner"
+    >
+
+    <title>Workout Plans | Simple Fitness Planner</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Workout Plans page CSS -->
+    <link rel="stylesheet" href="css/workout-plans.css">
+
+    <!-- Global JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/storage.js" defer></script>
+
+    <!-- Workout Plans page JavaScript -->
+    <script src="js/workout-plans.js" defer></script>
+</head>
+
+<body data-page="workout-plans">
+
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<div class="site-wrapper">
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <div class="container navbar-container">
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="FitPlanner home"
+            >
+                <img src="images/logo.png" alt="FitPlanner logo" class="logo-image">
+
+                <span class="logo-text">
+                    FitPlanner
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation menu"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+                <ul class="navigation-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="navigation-link"
+                            data-page-link="home"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-plans.html"
+                            class="navigation-link"
+                            data-page-link="workout-plans"
+                        >
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="exercises.html"
+                            class="navigation-link"
+                            data-page-link="exercises"
+                        >
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-tracker.html"
+                            class="navigation-link"
+                            data-page-link="workout-tracker"
+                        >
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="water-tracker.html"
+                            class="navigation-link"
+                            data-page-link="water-tracker"
+                        >
+                            Water Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="progress.html"
+                            class="navigation-link"
+                            data-page-link="progress"
+                        >
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="fitness-tips.html"
+                            class="navigation-link"
+                            data-page-link="fitness-tips"
+                        >
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+    <main
+        class="main-content"
+        id="mainContent"
+    >
+
+        <!-- ==============================================
+             PAGE HEADER
+        =============================================== -->
+        <section class="page-header">
+
+            <div class="container">
+
+                <span class="page-label">
+                    Find Your Routine
+                </span>
+
+                <h1>
+                    Workout Plans
+                </h1>
+
+                <p>
+                    Choose a workout based on your fitness level,
+                    available time, and personal goals.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             WORKOUT PLANS CONTENT
+        =============================================== -->
+        <section class="page-content workout-plans-section">
+
+            <div class="container">
+
+                <!-- Success and error messages -->
+                <div
+                    class="workout-message"
+                    id="workoutMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <!-- ======================================
+                     FILTERS
+                ======================================= -->
+                <div class="workout-filter-panel">
+
+                    <div class="filter-heading">
+
+                        <div>
+                            <span class="filter-label">
+                                Find a Plan
+                            </span>
+
+                            <h2>
+                                Choose Your Best Workout
+                            </h2>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="button button-light button-small"
+                            id="resetFiltersButton"
+                        >
+                            Reset Filters
+                        </button>
+
+                    </div>
+
+                    <div class="workout-filter-grid">
+
+                        <div class="form-group">
+
+                            <label
+                                for="workoutSearch"
+                                class="form-label"
+                            >
+                                Search plans
+                            </label>
+
+                            <div class="workout-search-box">
+
+                                <span
+                                    class="workout-search-icon"
+                                    aria-hidden="true"
+                                >
+                                    🔍
+                                </span>
+
+                                <input
+                                    type="search"
+                                    id="workoutSearch"
+                                    class="form-control"
+                                    placeholder="Search by plan name or goal"
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label
+                                for="difficultyFilter"
+                                class="form-label"
+                            >
+                                Difficulty
+                            </label>
+
+                            <select
+                                id="difficultyFilter"
+                                class="form-control"
+                            >
+                                <option value="all">
+                                    All difficulties
+                                </option>
+
+                                <option value="Beginner">
+                                    Beginner
+                                </option>
+
+                                <option value="Intermediate">
+                                    Intermediate
+                                </option>
+
+                                <option value="Advanced">
+                                    Advanced
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label
+                                for="durationFilter"
+                                class="form-label"
+                            >
+                                Duration
+                            </label>
+
+                            <select
+                                id="durationFilter"
+                                class="form-control"
+                            >
+                                <option value="all">
+                                    Any duration
+                                </option>
+
+                                <option value="short">
+                                    Up to 15 minutes
+                                </option>
+
+                                <option value="medium">
+                                    16–30 minutes
+                                </option>
+
+                                <option value="long">
+                                    More than 30 minutes
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ======================================
+                     RESULTS HEADER
+                ======================================= -->
+                <div class="workout-results-header">
+
+                    <div>
+                        <span class="results-label">
+                            Available Plans
+                        </span>
+
+                        <h2>
+                            Workout Collection
+                        </h2>
+                    </div>
+
+                    <p id="workoutResultCount">
+                        0 plans found
+                    </p>
+
+                </div>
+
+                <!-- ======================================
+                     DYNAMIC WORKOUT CARDS
+                ======================================= -->
+                <div
+                    class="workout-plans-grid"
+                    id="workoutPlansContainer"
+                >
+                    <!-- Workout cards are created by JavaScript. -->
+                </div>
+
+                <!-- ======================================
+                     EMPTY STATE
+                ======================================= -->
+                <div
+                    class="workout-empty-state hidden"
+                    id="workoutEmptyState"
+                >
+                    <div
+                        class="workout-empty-icon"
+                        aria-hidden="true"
+                    >
+                        🔎
+                    </div>
+
+                    <h2>
+                        No workout plans found
+                    </h2>
+
+                    <p>
+                        Try changing your search, difficulty,
+                        or duration filter.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="emptyStateResetButton"
+                    >
+                        Show All Plans
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             HOW TO CHOOSE
+        =============================================== -->
+        <section class="section section-soft">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Choosing a Plan
+                    </span>
+
+                    <h2 class="section-title">
+                        Start at the Right Level
+                    </h2>
+
+                    <p class="section-description">
+                        Select a routine that feels challenging
+                        but still allows you to exercise safely.
+                    </p>
+
+                </div>
+
+                <div class="plan-guide-grid">
+
+                    <article class="plan-guide-card">
+
+                        <div class="plan-guide-icon">
+                            🌱
+                        </div>
+
+                        <h3>
+                            Beginner
+                        </h3>
+
+                        <p>
+                            Choose beginner plans when you are new
+                            to exercise or returning after a break.
+                        </p>
+
+                    </article>
+
+                    <article class="plan-guide-card">
+
+                        <div class="plan-guide-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Intermediate
+                        </h3>
+
+                        <p>
+                            Choose intermediate plans when you can
+                            exercise comfortably and want more challenge.
+                        </p>
+
+                    </article>
+
+                    <article class="plan-guide-card">
+
+                        <div class="plan-guide-icon">
+                            🔥
+                        </div>
+
+                        <h3>
+                            Advanced
+                        </h3>
+
+                        <p>
+                            Choose advanced plans only when you have
+                            strong fitness experience and good technique.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                    aria-label="FitPlanner home"
+                >
+                    <img src="images/logo.png" alt="" class="footer-logo-image">
+
+                    <span>
+                        FitPlanner
+                    </span>
+                </a>
+
+                <p>
+                    A simple website for planning workouts,
+                    tracking hydration, and monitoring fitness
+                    progress.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Fitness Tools
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="workout-plans.html">
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="exercises.html">
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="workout-tracker.html">
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="water-tracker.html">
+                            Water Tracker
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Information
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="progress.html">
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fitness-tips.html">
+                            Fitness Tips
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy;
+                    <span id="currentYear"></span>
+                    Simple Fitness Planner. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<button
+    type="button"
+    class="scroll-top-button"
+    id="scrollTopButton"
+    aria-label="Scroll to the top of the page"
+>
+    ↑
+</button>
+
+</body>
+</html>

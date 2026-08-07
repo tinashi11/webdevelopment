@@ -1,0 +1,549 @@
+/* =========================================================
+   SIMPLE FITNESS PLANNER
+   WORKOUT PLANS PAGE
+========================================================= */
+
+
+/* =========================================================
+   1. PAGE SECTION
+========================================================= */
+
+.workout-plans-section {
+    background-color: var(--background-color);
+}
+
+
+/* =========================================================
+   2. MESSAGE
+========================================================= */
+
+.workout-message {
+    display: none;
+    margin-bottom: 24px;
+    padding: 15px 18px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-medium);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.workout-message.visible {
+    display: block;
+}
+
+.workout-message.success {
+    color: var(--success-color);
+    background-color: var(--success-light);
+    border-color: rgba(45, 157, 91, 0.25);
+}
+
+.workout-message.error {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+    border-color: rgba(217, 83, 79, 0.25);
+}
+
+
+/* =========================================================
+   3. FILTER PANEL
+========================================================= */
+
+.workout-filter-panel {
+    margin-bottom: 42px;
+    padding: 28px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.filter-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.filter-label,
+.results-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--primary-color);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.filter-heading h2,
+.workout-results-header h2 {
+    font-size: 1.45rem;
+}
+
+.workout-filter-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(260px, 2fr)
+        minmax(180px, 1fr)
+        minmax(180px, 1fr);
+    gap: 18px;
+}
+
+.workout-filter-grid .form-group {
+    margin-bottom: 0;
+}
+
+.workout-search-box {
+    position: relative;
+}
+
+.workout-search-box .form-control {
+    padding-left: 44px;
+}
+
+.workout-search-icon {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    color: var(--text-light);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   4. RESULTS HEADER
+========================================================= */
+
+.workout-results-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.workout-results-header p {
+    padding: 7px 12px;
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
+    border-radius: var(--radius-round);
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   5. WORKOUT GRID
+========================================================= */
+
+.workout-plans-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+
+/* =========================================================
+   6. WORKOUT CARD
+========================================================= */
+
+.workout-plan-card {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+    transition:
+        transform var(--transition-medium),
+        box-shadow var(--transition-medium),
+        border-color var(--transition-medium);
+}
+
+.workout-plan-card::before {
+    content: "";
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary-color),
+            var(--secondary-color)
+        );
+}
+
+.workout-plan-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(58, 134, 255, 0.35);
+    box-shadow: var(--shadow-medium);
+}
+
+.workout-card-main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 26px;
+}
+
+.workout-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.workout-plan-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-light),
+            var(--secondary-light)
+        );
+    font-size: 1.7rem;
+}
+
+.workout-difficulty {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: var(--radius-round);
+    font-size: 0.74rem;
+    font-weight: 800;
+}
+
+.difficulty-beginner {
+    color: var(--success-color);
+    background-color: var(--success-light);
+}
+
+.difficulty-intermediate {
+    color: #8c6800;
+    background-color: var(--warning-light);
+}
+
+.difficulty-advanced {
+    color: var(--danger-color);
+    background-color: var(--danger-light);
+}
+
+.workout-plan-card h3 {
+    margin-bottom: 9px;
+    font-size: 1.25rem;
+}
+
+.workout-plan-description {
+    min-height: 70px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+}
+
+.workout-plan-meta {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.workout-meta-item {
+    padding: 12px 8px;
+    text-align: center;
+    background-color: var(--surface-soft);
+    border-radius: 10px;
+}
+
+.workout-meta-icon {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 1.05rem;
+}
+
+.workout-meta-value {
+    display: block;
+    color: var(--text-dark);
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.workout-meta-label {
+    display: block;
+    color: var(--text-light);
+    font-size: 0.68rem;
+}
+
+
+/* =========================================================
+   7. WORKOUT EXERCISES
+========================================================= */
+
+.workout-exercises-section {
+    margin-bottom: 20px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.workout-exercises-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 0;
+    border: none;
+    color: var(--text-dark);
+    background-color: transparent;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-align: left;
+}
+
+.workout-toggle-icon {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: transform var(--transition-fast);
+}
+
+.workout-exercises-toggle[aria-expanded="true"]
+.workout-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.workout-exercise-list {
+    display: none;
+    padding-bottom: 15px;
+}
+
+.workout-exercise-list.open {
+    display: grid;
+    gap: 9px;
+}
+
+.workout-exercise-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 12px;
+    background-color: var(--surface-soft);
+    border-radius: 9px;
+}
+
+.workout-exercise-name {
+    color: var(--text-dark);
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.workout-exercise-target {
+    flex-shrink: 0;
+    color: var(--text-medium);
+    font-size: 0.76rem;
+}
+
+
+/* =========================================================
+   8. CARD ACTIONS
+========================================================= */
+
+.workout-card-actions {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.workout-start-button {
+    width: 100%;
+}
+
+.workout-details-button {
+    min-width: 46px;
+    padding-inline: 14px;
+}
+
+
+/* =========================================================
+   9. EMPTY STATE
+========================================================= */
+
+.workout-empty-state {
+    max-width: 560px;
+    margin: 40px auto 0;
+    padding: 50px 28px;
+    text-align: center;
+    background-color: var(--surface-color);
+    border: 1px dashed var(--border-dark);
+    border-radius: var(--radius-large);
+}
+
+.workout-empty-icon {
+    width: 78px;
+    height: 78px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    font-size: 2rem;
+}
+
+.workout-empty-state h2 {
+    margin-bottom: 10px;
+}
+
+.workout-empty-state p {
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   10. PLAN GUIDE
+========================================================= */
+
+.plan-guide-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.plan-guide-card {
+    padding: 26px;
+    text-align: center;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-small);
+}
+
+.plan-guide-icon {
+    width: 58px;
+    height: 58px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 18px;
+    border-radius: 16px;
+    background-color: var(--primary-light);
+    font-size: 1.6rem;
+}
+
+.plan-guide-card h3 {
+    margin-bottom: 9px;
+}
+
+.plan-guide-card p {
+    font-size: 0.88rem;
+}
+
+
+/* =========================================================
+   11. RESPONSIVE DESIGN
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .workout-plans-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .workout-filter-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .workout-filter-grid .form-group:first-child {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .workout-filter-panel {
+        padding: 22px;
+    }
+
+    .filter-heading,
+    .workout-results-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .workout-filter-grid,
+    .workout-plans-grid,
+    .plan-guide-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workout-filter-grid .form-group:first-child {
+        grid-column: auto;
+    }
+
+    .filter-heading .button {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .workout-card-main {
+        padding: 22px;
+    }
+
+    .workout-plan-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .workout-meta-item {
+        display: grid;
+        grid-template-columns:
+            auto
+            minmax(0, 1fr)
+            auto;
+        gap: 8px;
+        align-items: center;
+        text-align: left;
+    }
+
+    .workout-meta-icon {
+        margin-bottom: 0;
+    }
+
+    .workout-meta-label {
+        text-align: right;
+    }
+
+    .workout-card-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .workout-details-button {
+        width: 100%;
+    }
+
+}

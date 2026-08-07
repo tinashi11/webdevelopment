@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Track your daily exercises, workout duration, and completion progress."
+    >
+
+    <meta
+        name="author"
+        content="Simple Fitness Planner"
+    >
+
+    <title>Workout Tracker | Simple Fitness Planner</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Workout Tracker CSS -->
+    <link rel="stylesheet" href="css/workout-tracker.css">
+
+    <!-- Global JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/storage.js" defer></script>
+
+    <!-- Workout Tracker JavaScript -->
+    <script src="js/workout-tracker.js" defer></script>
+</head>
+
+<body data-page="workout-tracker">
+
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<div class="site-wrapper">
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <div class="container navbar-container">
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="FitPlanner home"
+            >
+                <img src="images/logo.png" alt="FitPlanner logo" class="logo-image">
+
+                <span class="logo-text">
+                    FitPlanner
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation menu"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+                <ul class="navigation-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="navigation-link"
+                            data-page-link="home"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-plans.html"
+                            class="navigation-link"
+                            data-page-link="workout-plans"
+                        >
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="exercises.html"
+                            class="navigation-link"
+                            data-page-link="exercises"
+                        >
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-tracker.html"
+                            class="navigation-link"
+                            data-page-link="workout-tracker"
+                        >
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="water-tracker.html"
+                            class="navigation-link"
+                            data-page-link="water-tracker"
+                        >
+                            Water Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="progress.html"
+                            class="navigation-link"
+                            data-page-link="progress"
+                        >
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="fitness-tips.html"
+                            class="navigation-link"
+                            data-page-link="fitness-tips"
+                        >
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+    <main
+        class="main-content"
+        id="mainContent"
+    >
+
+        <!-- ==============================================
+             PAGE HEADER
+        =============================================== -->
+        <section class="page-header">
+
+            <div class="container">
+
+                <span class="page-label">
+                    Daily Activity
+                </span>
+
+                <h1>
+                    Workout Tracker
+                </h1>
+
+                <p>
+                    Complete your exercises, track your workout
+                    time, and monitor your daily progress.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             TRACKER CONTENT
+        =============================================== -->
+        <section class="page-content tracker-page-section">
+
+            <div class="container">
+
+                <div
+                    class="tracker-message"
+                    id="trackerMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <!-- ======================================
+                     EMPTY WORKOUT STATE
+                ======================================= -->
+                <div
+                    class="tracker-empty-state hidden"
+                    id="trackerEmptyState"
+                >
+                    <div
+                        class="tracker-empty-icon"
+                        aria-hidden="true"
+                    >
+                        🏋️
+                    </div>
+
+                    <h2>
+                        No workout selected
+                    </h2>
+
+                    <p>
+                        Select a workout plan or add exercises
+                        from the exercise library.
+                    </p>
+
+                    <div class="tracker-empty-actions">
+
+                        <a
+                            href="workout-plans.html"
+                            class="button button-primary"
+                        >
+                            Choose a Workout Plan
+                        </a>
+
+                        <a
+                            href="exercises.html"
+                            class="button button-outline"
+                        >
+                            Browse Exercises
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- ======================================
+                     WORKOUT TRACKER
+                ======================================= -->
+                <div
+                    class="tracker-layout hidden"
+                    id="workoutTrackerContainer"
+                >
+
+                    <!-- Main workout area -->
+                    <div class="tracker-main-column">
+
+                        <!-- Workout plan heading -->
+                        <section class="current-workout-card">
+
+                            <div class="current-workout-header">
+
+                                <div class="current-workout-heading">
+
+                                    <div
+                                        class="current-workout-icon"
+                                        id="currentWorkoutIcon"
+                                        aria-hidden="true"
+                                    >
+                                        🏋️
+                                    </div>
+
+                                    <div>
+                                        <span class="tracker-small-label">
+                                            Today’s Workout
+                                        </span>
+
+                                        <h2 id="currentWorkoutName">
+                                            Custom Workout
+                                        </h2>
+
+                                        <p id="currentWorkoutDate">
+                                            Today
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <span
+                                    class="tracker-difficulty-badge"
+                                    id="currentWorkoutDifficulty"
+                                >
+                                    Custom
+                                </span>
+
+                            </div>
+
+                            <div class="current-workout-meta">
+
+                                <div class="current-workout-meta-item">
+
+                                    <span aria-hidden="true">
+                                        🎯
+                                    </span>
+
+                                    <div>
+                                        <small>Goal</small>
+
+                                        <strong id="currentWorkoutGoal">
+                                            Daily Activity
+                                        </strong>
+                                    </div>
+
+                                </div>
+
+                                <div class="current-workout-meta-item">
+
+                                    <span aria-hidden="true">
+                                        📋
+                                    </span>
+
+                                    <div>
+                                        <small>Exercises</small>
+
+                                        <strong id="currentWorkoutExerciseTotal">
+                                            0
+                                        </strong>
+                                    </div>
+
+                                </div>
+
+                                <div class="current-workout-meta-item">
+
+                                    <span aria-hidden="true">
+                                        ⏱️
+                                    </span>
+
+                                    <div>
+                                        <small>Suggested</small>
+
+                                        <strong id="currentWorkoutSuggestedTime">
+                                            0 minutes
+                                        </strong>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- Progress section -->
+                        <section class="tracker-progress-card">
+
+                            <div class="tracker-progress-heading">
+
+                                <div>
+                                    <span class="tracker-small-label">
+                                        Workout Progress
+                                    </span>
+
+                                    <h2>
+                                        Keep Moving Forward
+                                    </h2>
+                                </div>
+
+                                <strong
+                                    class="tracker-percentage"
+                                    id="trackerPercentage"
+                                >
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-wrapper">
+
+                                <div class="progress-details">
+
+                                    <span id="trackerProgressText">
+                                        0 of 0 exercises completed
+                                    </span>
+
+                                    <span id="trackerRemainingText">
+                                        0 remaining
+                                    </span>
+
+                                </div>
+
+                                <div
+                                    class="progress-bar tracker-progress-bar"
+                                    id="trackerProgressBar"
+                                    role="progressbar"
+                                    aria-label="Workout completion"
+                                    aria-valuemin="0"
+                                    aria-valuemax="100"
+                                    aria-valuenow="0"
+                                >
+                                    <div
+                                        class="progress-fill"
+                                        id="trackerProgressFill"
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                            <div class="tracker-statistics">
+
+                                <div class="tracker-stat-box">
+
+                                    <strong id="completedTrackerCount">
+                                        0
+                                    </strong>
+
+                                    <span>
+                                        Completed
+                                    </span>
+
+                                </div>
+
+                                <div class="tracker-stat-box">
+
+                                    <strong id="remainingTrackerCount">
+                                        0
+                                    </strong>
+
+                                    <span>
+                                        Remaining
+                                    </span>
+
+                                </div>
+
+                                <div class="tracker-stat-box">
+
+                                    <strong id="totalTrackerCount">
+                                        0
+                                    </strong>
+
+                                    <span>
+                                        Total
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </section>
+
+                        <!-- Exercise list -->
+                        <section class="tracker-exercises-card">
+
+                            <div class="tracker-section-heading">
+
+                                <div>
+                                    <span class="tracker-small-label">
+                                        Exercise Checklist
+                                    </span>
+
+                                    <h2>
+                                        Today’s Exercises
+                                    </h2>
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="button button-light button-small"
+                                    id="markAllCompleteButton"
+                                >
+                                    Complete All
+                                </button>
+
+                            </div>
+
+                            <div
+                                class="tracker-exercise-list"
+                                id="trackerExerciseList"
+                            >
+                                <!-- Exercises are generated by JavaScript. -->
+                            </div>
+
+                        </section>
+
+                        <!-- Add custom exercise -->
+                        <section class="custom-exercise-card">
+
+                            <div class="tracker-section-heading">
+
+                                <div>
+                                    <span class="tracker-small-label">
+                                        Custom Exercise
+                                    </span>
+
+                                    <h2>
+                                        Add Another Exercise
+                                    </h2>
+                                </div>
+
+                                <span
+                                    class="custom-form-toggle-icon"
+                                    aria-hidden="true"
+                                >
+                                    ＋
+                                </span>
+
+                            </div>
+
+                            <form
+                                class="custom-exercise-form"
+                                id="customExerciseForm"
+                                novalidate
+                            >
+
+                                <div class="custom-exercise-grid">
+
+                                    <div class="form-group">
+
+                                        <label
+                                            for="customExerciseName"
+                                            class="form-label"
+                                        >
+                                            Exercise name
+                                            <span class="required-mark">*</span>
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="customExerciseName"
+                                            class="form-control"
+                                            placeholder="Example: Walking"
+                                            maxlength="60"
+                                            required
+                                        >
+
+                                        <span
+                                            class="form-error"
+                                            id="customExerciseNameError"
+                                        ></span>
+
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label
+                                            for="customExerciseTarget"
+                                            class="form-label"
+                                        >
+                                            Target
+                                            <span class="required-mark">*</span>
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="customExerciseTarget"
+                                            class="form-control"
+                                            placeholder="Example: 15 minutes"
+                                            maxlength="50"
+                                            required
+                                        >
+
+                                        <span
+                                            class="form-error"
+                                            id="customExerciseTargetError"
+                                        ></span>
+
+                                    </div>
+
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    class="button button-primary"
+                                >
+                                    Add Exercise
+                                </button>
+
+                            </form>
+
+                        </section>
+
+                    </div>
+
+                    <!-- Sidebar -->
+                    <aside class="tracker-sidebar">
+
+                        <!-- Timer -->
+                        <section class="workout-timer-card">
+
+                            <span class="tracker-small-label">
+                                Workout Timer
+                            </span>
+
+                            <h2>
+                                Track Your Time
+                            </h2>
+
+                            <div
+                                class="timer-display"
+                                id="timerDisplay"
+                                aria-live="polite"
+                            >
+                                00:00:00
+                            </div>
+
+                            <p
+                                class="timer-status"
+                                id="timerStatus"
+                            >
+                                Timer is ready.
+                            </p>
+
+                            <div class="timer-buttons">
+
+                                <button
+                                    type="button"
+                                    class="button button-primary"
+                                    id="startTimerButton"
+                                >
+                                    Start
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="button button-warning"
+                                    id="pauseTimerButton"
+                                    disabled
+                                >
+                                    Pause
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="button button-light"
+                                    id="resetTimerButton"
+                                >
+                                    Reset
+                                </button>
+
+                            </div>
+
+                        </section>
+
+                        <!-- Workout actions -->
+                        <section class="workout-actions-card">
+
+                            <span class="tracker-small-label">
+                                Workout Actions
+                            </span>
+
+                            <h2>
+                                Finish or Reset
+                            </h2>
+
+                            <p>
+                                Finish the workout to save it in
+                                your progress history.
+                            </p>
+
+                            <button
+                                type="button"
+                                class="button button-secondary button-block"
+                                id="finishWorkoutButton"
+                            >
+                                Finish Workout
+                            </button>
+
+                            <button
+                                type="button"
+                                class="button button-outline button-block"
+                                id="resetWorkoutProgressButton"
+                            >
+                                Reset Progress
+                            </button>
+
+                            <button
+                                type="button"
+                                class="button button-danger button-block"
+                                id="deleteWorkoutButton"
+                            >
+                                Delete Workout
+                            </button>
+
+                        </section>
+
+                        <!-- Tip -->
+                        <section class="tracker-tip-card">
+
+                            <div
+                                class="tracker-tip-icon"
+                                aria-hidden="true"
+                            >
+                                💡
+                            </div>
+
+                            <h2>
+                                Today’s Reminder
+                            </h2>
+
+                            <p>
+                                Use controlled movements, rest when
+                                needed, and drink water regularly.
+                            </p>
+
+                            <a
+                                href="fitness-tips.html"
+                                class="tracker-tip-link"
+                            >
+                                Read fitness tips →
+                            </a>
+
+                        </section>
+
+                    </aside>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                    aria-label="FitPlanner home"
+                >
+                    <img src="images/logo.png" alt="" class="footer-logo-image">
+                    <span>FitPlanner</span>
+                </a>
+
+                <p>
+                    A simple website for planning workouts,
+                    tracking hydration, and monitoring fitness
+                    progress.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Fitness Tools</h2>
+
+                <ul>
+                    <li>
+                        <a href="workout-plans.html">
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="exercises.html">
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="workout-tracker.html">
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="water-tracker.html">
+                            Water Tracker
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>Information</h2>
+
+                <ul>
+                    <li>
+                        <a href="progress.html">
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fitness-tips.html">
+                            Fitness Tips
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy;
+                    <span id="currentYear"></span>
+                    Simple Fitness Planner. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<button
+    type="button"
+    class="scroll-top-button"
+    id="scrollTopButton"
+    aria-label="Scroll to the top of the page"
+>
+    ↑
+</button>
+
+</body>
+</html>

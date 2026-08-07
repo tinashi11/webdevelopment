@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Plan workouts, track water intake, and monitor your fitness progress with FitPlanner."
+    >
+
+    <meta
+        name="author"
+        content="Simple Fitness Planner"
+    >
+
+    <title>Home | Simple Fitness Planner</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Home-page CSS -->
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Global and home-page JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/storage.js" defer></script>
+</head>
+
+<body data-page="home">
+
+<a href="#mainContent" class="skip-link">
+    Skip to main content
+</a>
+
+<div class="site-wrapper">
+
+    <!-- ==================================================
+         HEADER
+    =================================================== -->
+    <header class="site-header">
+
+        <div class="container navbar-container">
+
+            <a
+                href="index.html"
+                class="site-logo"
+                aria-label="FitPlanner home"
+            >
+                <img src="images/logo.png" alt="FitPlanner logo" class="logo-image">
+
+                <span class="logo-text">
+                    FitPlanner
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Open navigation menu"
+                aria-controls="mainNavigation"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav
+                class="main-navigation"
+                id="mainNavigation"
+                aria-label="Main navigation"
+            >
+                <ul class="navigation-list">
+
+                    <li>
+                        <a
+                            href="index.html"
+                            class="navigation-link"
+                            data-page-link="home"
+                        >
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-plans.html"
+                            class="navigation-link"
+                            data-page-link="workout-plans"
+                        >
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="exercises.html"
+                            class="navigation-link"
+                            data-page-link="exercises"
+                        >
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="workout-tracker.html"
+                            class="navigation-link"
+                            data-page-link="workout-tracker"
+                        >
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="water-tracker.html"
+                            class="navigation-link"
+                            data-page-link="water-tracker"
+                        >
+                            Water Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="progress.html"
+                            class="navigation-link"
+                            data-page-link="progress"
+                        >
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="fitness-tips.html"
+                            class="navigation-link"
+                            data-page-link="fitness-tips"
+                        >
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+
+    <!-- ==================================================
+         MAIN CONTENT
+    =================================================== -->
+    <main
+        class="main-content"
+        id="mainContent"
+    >
+
+        <!-- ==============================================
+             HERO SECTION
+        =============================================== -->
+        <section class="home-hero">
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        Build healthier daily habits
+                    </span>
+
+                    <h1>
+                        Make Fitness Simple, Consistent and Enjoyable
+                    </h1>
+
+                    <p class="hero-description">
+                        Choose easy workout plans, complete daily
+                        exercises, track your water intake, and view
+                        your progress in one simple fitness website.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="workout-plans.html"
+                            class="button button-primary button-large"
+                        >
+                            Browse Workout Plans
+                        </a>
+
+                        <a
+                            href="workout-tracker.html"
+                            class="button button-outline button-large"
+                        >
+                            Open Workout Tracker
+                        </a>
+
+                    </div>
+
+                    <div class="hero-features">
+
+                        <span>
+                            <strong>✓</strong>
+                            Beginner friendly
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            No account required
+                        </span>
+
+                        <span>
+                            <strong>✓</strong>
+                            Saved in your browser
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-dashboard">
+
+                    <div class="dashboard-header">
+
+                        <div>
+                            <span class="dashboard-label">
+                                Today
+                            </span>
+
+                            <h2 id="todayDate">
+                                Loading date...
+                            </h2>
+                        </div>
+
+                        <span class="dashboard-status">
+                            Stay Active
+                        </span>
+
+                    </div>
+
+                    <div class="dashboard-visual">
+
+                        <div class="main-fitness-circle">
+                            <span aria-hidden="true">
+                                🏃
+                            </span>
+                        </div>
+
+                        <div class="floating-fitness-icon water-icon">
+                            <span aria-hidden="true">
+                                💧
+                            </span>
+                        </div>
+
+                        <div class="floating-fitness-icon fire-icon">
+                            <span aria-hidden="true">
+                                🔥
+                            </span>
+                        </div>
+
+                        <div class="floating-fitness-icon strength-icon">
+                            <span aria-hidden="true">
+                                🏋️
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-message">
+
+                        <strong>
+                            Small steps create big results.
+                        </strong>
+
+                        <span>
+                            Complete one healthy activity today.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             MOTIVATIONAL QUOTE
+        =============================================== -->
+        <section class="quote-section">
+
+            <div class="container">
+
+                <div class="quote-card">
+
+                    <div
+                        class="quote-symbol"
+                        aria-hidden="true"
+                    >
+                        “
+                    </div>
+
+                    <div class="quote-content">
+
+                        <span class="quote-label">
+                            Daily Motivation
+                        </span>
+
+                        <blockquote id="motivationalQuote">
+                            Success starts with showing up.
+                        </blockquote>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="button button-light button-small"
+                        id="newQuoteButton"
+                    >
+                        New Quote
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             DAILY SUMMARY
+        =============================================== -->
+        <section class="section home-summary-section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Daily Overview
+                    </span>
+
+                    <h2 class="section-title">
+                        Today’s Fitness Summary
+                    </h2>
+
+                    <p class="section-description">
+                        Your workout and water information will
+                        automatically appear here as you use the
+                        fitness trackers.
+                    </p>
+
+                </div>
+
+                <div class="home-summary-grid">
+
+                    <!-- Workout summary -->
+                    <article class="summary-card">
+
+                        <div class="summary-card-header">
+
+                            <div class="summary-icon workout-summary-icon">
+                                🏋️
+                            </div>
+
+                            <span class="badge badge-primary">
+                                Workout
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Daily Workout
+                        </h3>
+
+                        <p id="workoutSummaryMessage">
+                            You have not added any exercises for today.
+                        </p>
+
+                        <div class="progress-wrapper">
+
+                            <div class="progress-details">
+
+                                <span>
+                                    Completion
+                                </span>
+
+                                <strong id="workoutPercentageText">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div
+                                class="progress-bar"
+                                id="workoutProgressBar"
+                                role="progressbar"
+                                aria-label="Workout progress"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                            >
+                                <div
+                                    class="progress-fill"
+                                    id="workoutProgressFill"
+                                ></div>
+                            </div>
+
+                        </div>
+
+                        <div class="summary-values">
+
+                            <div class="summary-value-box">
+
+                                <strong id="completedExerciseCount">
+                                    0
+                                </strong>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                            </div>
+
+                            <div class="summary-value-box">
+
+                                <strong id="totalExerciseCount">
+                                    0
+                                </strong>
+
+                                <span>
+                                    Total
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <a
+                            href="workout-tracker.html"
+                            class="button button-primary button-block"
+                        >
+                            View Workout
+                        </a>
+
+                    </article>
+
+                    <!-- Water summary -->
+                    <article class="summary-card">
+
+                        <div class="summary-card-header">
+
+                            <div class="summary-icon water-summary-icon">
+                                💧
+                            </div>
+
+                            <span class="badge badge-info">
+                                Hydration
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Water Intake
+                        </h3>
+
+                        <p id="waterSummaryMessage">
+                            Start recording your daily water intake.
+                        </p>
+
+                        <div class="progress-wrapper">
+
+                            <div class="progress-details">
+
+                                <span>
+                                    Daily goal
+                                </span>
+
+                                <strong id="waterPercentageText">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div
+                                class="progress-bar"
+                                id="waterProgressBar"
+                                role="progressbar"
+                                aria-label="Water-intake progress"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                aria-valuenow="0"
+                            >
+                                <div
+                                    class="progress-fill water-progress-fill"
+                                    id="waterProgressFill"
+                                ></div>
+                            </div>
+
+                        </div>
+
+                        <div class="summary-values">
+
+                            <div class="summary-value-box">
+
+                                <strong id="waterConsumedCount">
+                                    0
+                                </strong>
+
+                                <span>
+                                    Glasses
+                                </span>
+
+                            </div>
+
+                            <div class="summary-value-box">
+
+                                <strong id="waterGoalCount">
+                                    8
+                                </strong>
+
+                                <span>
+                                    Goal
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <a
+                            href="water-tracker.html"
+                            class="button button-primary button-block"
+                        >
+                            Track Water
+                        </a>
+
+                    </article>
+
+                    <!-- Activity summary -->
+                    <article class="summary-card">
+
+                        <div class="summary-card-header">
+
+                            <div class="summary-icon time-summary-icon">
+                                ⏱️
+                            </div>
+
+                            <span class="badge badge-warning">
+                                Activity
+                            </span>
+
+                        </div>
+
+                        <h3>
+                            Workout Time
+                        </h3>
+
+                        <p>
+                            The total amount of exercise time recorded
+                            for today.
+                        </p>
+
+                        <div class="workout-time-display">
+
+                            <strong id="workoutDuration">
+                                0
+                            </strong>
+
+                            <span>
+                                minutes
+                            </span>
+
+                        </div>
+
+                        <div class="recommended-time">
+
+                            <span>
+                                Suggested activity
+                            </span>
+
+                            <strong>
+                                20–30 minutes
+                            </strong>
+
+                        </div>
+
+                        <a
+                            href="progress.html"
+                            class="button button-outline button-block"
+                        >
+                            View Progress
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             QUICK ACCESS
+        =============================================== -->
+        <section class="section section-soft">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Quick Access
+                    </span>
+
+                    <h2 class="section-title">
+                        What Would You Like to Do?
+                    </h2>
+
+                    <p class="section-description">
+                        Choose one of the fitness tools below to
+                        continue your daily fitness routine.
+                    </p>
+
+                </div>
+
+                <div class="quick-access-grid">
+
+                    <a
+                        href="workout-plans.html"
+                        class="quick-access-card"
+                    >
+                        <div class="quick-access-icon">
+                            📋
+                        </div>
+
+                        <div class="quick-access-content">
+
+                            <h3>
+                                Choose a Workout
+                            </h3>
+
+                            <p>
+                                Find a routine that matches your
+                                fitness level and available time.
+                            </p>
+
+                        </div>
+
+                        <span class="quick-access-arrow">
+                            →
+                        </span>
+                    </a>
+
+                    <a
+                        href="exercises.html"
+                        class="quick-access-card"
+                    >
+                        <div class="quick-access-icon">
+                            🤸
+                        </div>
+
+                        <div class="quick-access-content">
+
+                            <h3>
+                                Browse Exercises
+                            </h3>
+
+                            <p>
+                                Search strength, cardio, warm-up,
+                                flexibility, and core exercises.
+                            </p>
+
+                        </div>
+
+                        <span class="quick-access-arrow">
+                            →
+                        </span>
+                    </a>
+
+                    <a
+                        href="workout-tracker.html"
+                        class="quick-access-card"
+                    >
+                        <div class="quick-access-icon">
+                            ✅
+                        </div>
+
+                        <div class="quick-access-content">
+
+                            <h3>
+                                Track a Workout
+                            </h3>
+
+                            <p>
+                                Mark exercises as complete and monitor
+                                your daily completion percentage.
+                            </p>
+
+                        </div>
+
+                        <span class="quick-access-arrow">
+                            →
+                        </span>
+                    </a>
+
+                    <a
+                        href="water-tracker.html"
+                        class="quick-access-card"
+                    >
+                        <div class="quick-access-icon">
+                            🥤
+                        </div>
+
+                        <div class="quick-access-content">
+
+                            <h3>
+                                Record Water
+                            </h3>
+
+                            <p>
+                                Add each glass you drink and work
+                                towards your hydration goal.
+                            </p>
+
+                        </div>
+
+                        <span class="quick-access-arrow">
+                            →
+                        </span>
+                    </a>
+
+                    <a
+                        href="progress.html"
+                        class="quick-access-card"
+                    >
+                        <div class="quick-access-icon">
+                            📈
+                        </div>
+
+                        <div class="quick-access-content">
+
+                            <h3>
+                                View Progress
+                            </h3>
+
+                            <p>
+                                Review workout statistics, exercise
+                                totals, and water records.
+                            </p>
+
+                        </div>
+
+                        <span class="quick-access-arrow">
+                            →
+                        </span>
+                    </a>
+
+                    <a
+                        href="fitness-tips.html"
+                        class="quick-access-card"
+                    >
+                        <div class="quick-access-icon">
+                            💡
+                        </div>
+
+                        <div class="quick-access-content">
+
+                            <h3>
+                                Read Fitness Tips
+                            </h3>
+
+                            <p>
+                                Learn about exercise safety,
+                                hydration, recovery, and motivation.
+                            </p>
+
+                        </div>
+
+                        <span class="quick-access-arrow">
+                            →
+                        </span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             BENEFITS
+        =============================================== -->
+        <section class="section benefits-section">
+
+            <div class="container">
+
+                <div class="section-header">
+
+                    <span class="section-label">
+                        Why FitPlanner?
+                    </span>
+
+                    <h2 class="section-title">
+                        Simple Tools for Better Habits
+                    </h2>
+
+                    <p class="section-description">
+                        FitPlanner focuses on useful beginner-friendly
+                        tools without complicated accounts or equipment.
+                    </p>
+
+                </div>
+
+                <div class="benefits-grid">
+
+                    <article class="benefit-card">
+
+                        <span class="benefit-number">
+                            01
+                        </span>
+
+                        <div class="benefit-icon">
+                            🎯
+                        </div>
+
+                        <h3>
+                            Clear Daily Goals
+                        </h3>
+
+                        <p>
+                            Use simple workout and hydration goals that
+                            are easy to understand and complete.
+                        </p>
+
+                    </article>
+
+                    <article class="benefit-card">
+
+                        <span class="benefit-number">
+                            02
+                        </span>
+
+                        <div class="benefit-icon">
+                            📊
+                        </div>
+
+                        <h3>
+                            Visible Progress
+                        </h3>
+
+                        <p>
+                            Progress bars and statistics make it easy
+                            to see your daily achievements.
+                        </p>
+
+                    </article>
+
+                    <article class="benefit-card">
+
+                        <span class="benefit-number">
+                            03
+                        </span>
+
+                        <div class="benefit-icon">
+                            💾
+                        </div>
+
+                        <h3>
+                            Browser Storage
+                        </h3>
+
+                        <p>
+                            Your fitness records can be saved directly
+                            in your browser using localStorage.
+                        </p>
+
+                    </article>
+
+                    <article class="benefit-card">
+
+                        <span class="benefit-number">
+                            04
+                        </span>
+
+                        <div class="benefit-icon">
+                            🌱
+                        </div>
+
+                        <h3>
+                            Beginner Friendly
+                        </h3>
+
+                        <p>
+                            The website is designed for people starting
+                            a simple fitness and hydration routine.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==============================================
+             CALL TO ACTION
+        =============================================== -->
+        <section class="home-cta-section">
+
+            <div class="container">
+
+                <div class="home-cta">
+
+                    <div class="home-cta-content">
+
+                        <span class="home-cta-label">
+                            Start Today
+                        </span>
+
+                        <h2>
+                            Ready to Complete Your First Workout?
+                        </h2>
+
+                        <p>
+                            Select a beginner-friendly plan and begin
+                            tracking your daily exercises.
+                        </p>
+
+                    </div>
+
+                    <div class="home-cta-buttons">
+
+                        <a
+                            href="workout-plans.html"
+                            class="button button-warning button-large"
+                        >
+                            Select a Plan
+                        </a>
+
+                        <a
+                            href="fitness-tips.html"
+                            class="button home-cta-outline button-large"
+                        >
+                            Read Fitness Tips
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="footer-logo"
+                    aria-label="FitPlanner home"
+                >
+                    <img src="images/logo.png" alt="" class="footer-logo-image">
+
+                    <span>
+                        FitPlanner
+                    </span>
+                </a>
+
+                <p>
+                    A simple website for planning workouts,
+                    tracking hydration, and monitoring fitness
+                    progress.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Fitness Tools
+                </h2>
+
+                <ul>
+
+                    <li>
+                        <a href="workout-plans.html">
+                            Workout Plans
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="exercises.html">
+                            Exercises
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="workout-tracker.html">
+                            Workout Tracker
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="water-tracker.html">
+                            Water Tracker
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h2>
+                    Information
+                </h2>
+
+                <ul>
+
+                    <li>
+                        <a href="progress.html">
+                            Progress
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="fitness-tips.html">
+                            Fitness Tips
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy;
+                    <span id="currentYear"></span>
+                    Simple Fitness Planner. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</div>
+
+<button
+    type="button"
+    class="scroll-top-button"
+    id="scrollTopButton"
+    aria-label="Scroll to the top of the page"
+>
+    ↑
+</button>
+
+</body>
+</html>
